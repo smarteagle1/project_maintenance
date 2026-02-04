@@ -1,9 +1,11 @@
-import Footer from "./assets/Footer"
-import Navbar from "./assets/Navbar"
+import Footer from "@/components/Footer"
+import Navbar from "@/components/Navbar"
 import { Routes, Route } from "react-router-dom"
-import AssemblyLine from "./assets/Assembly_line"
-import StationPage from "./assets/StationPage"
-import TestOutline1 from "./assets/TestOutline1"
+import AssemblyLine from "@/pages/Assembly_line"
+import StationPage from "@/pages/StationPage"
+import TestOutline1 from "@/pages/TestOutline1"
+import Login from "@/pages/Login"
+import Register from "@/pages/Register"
 
 function App() {
   return(
@@ -14,6 +16,8 @@ function App() {
         <Route path="/" element={<AssemblyLine/>}/>
         <Route path="/:id" element={<StationPage/>}/>
         <Route path="/test" element={<TestOutline1/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/register" element={<Register />}/>
         </Routes>
         </main>
       <footer><Footer /></footer>

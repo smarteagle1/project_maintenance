@@ -34,7 +34,7 @@ function collectMeshes(haha) {
   const meshes = [];
   haha.traverse((nieco) => {
     if (nieco.isMesh) meshes.push(nieco);
-    console.log("meshes", meshes)
+    // console.log("meshes", meshes)
   });
   return meshes;
 }
@@ -66,7 +66,7 @@ export default function StationST10({ partForm, className = "", hoveredId, setHo
   // }
  useEffect(() => {
   if (modelRef.current) {
-    console.log("model is now available:", modelRef.current);
+    // console.log("model is now available:", modelRef.current);
   }
 });
   
@@ -75,14 +75,14 @@ export default function StationST10({ partForm, className = "", hoveredId, setHo
     return itemMeshesRef.current.get(hoveredId) ?? [];
   }, [hoveredId]);
 
- useEffect(() => {
-  if (outlineSelection.length>0) {
-    console.log("outlineSelection",outlineSelection.map(m=>({
-      uuid: m.uuid,
-      type: m.type
-    })));
-  }
-});
+//  useEffect(() => {
+//   if (outlineSelection.length>0) {
+//     console.log("outlineSelection",outlineSelection.map(m=>({
+//       uuid: m.uuid,
+//       type: m.type
+//     })));
+//   }
+// });
 
   return (
     <div className={`flex flex-col w-full h-full min-h-0 ${className}`}>

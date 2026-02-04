@@ -2,7 +2,7 @@
 
 export default function Footer(){
     return(
-        <footer className="fixed bottom-0 w-full z-50 transition-all duration-300 bg-slate-950/20 backdrop-blur-sm">
+        <footer className="sticky bottom-0 w-full z-50 transition-all duration-300 bg-slate-950/20 backdrop-blur-sm">
         
         {/* Gradient border on top */}
         <div className="h-0.5 w-full bg-gradient-to-r from-transparent via-emerald-400 to-transparent" />

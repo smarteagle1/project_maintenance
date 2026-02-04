@@ -1,13 +1,23 @@
-import { useMemo, useState } from "react";
-import Card from "./Card";
+import { useEffect, useMemo, useState } from "react";
+import Card from "@/components/Card";
 import { useNavigate } from "react-router-dom";
-import Stations from "./Stations";
+import Stations from "@/data/Stations";
+import { useAuth } from "@/Auth/AuthContext";
 
 export default function Arrow() {
   const navigate = useNavigate();
   const shaftLength = 2500;
   const head = 40;
   const total = shaftLength + head;
+  const {user}=useAuth()
+  const userId=user?.id
+  
+
+    useEffect(() => {
+    if(user)
+      console.log("arrow userId",user.id)
+  }, [user]);
+
 
   const [hoveredId, setHoveredId]=useState(null)
 
@@ -15,8 +25,34 @@ export default function Arrow() {
     if(!hoveredId) return Stations;
     const rest = Stations.filter(s=>s.id !== hoveredId);
     const hovered = Stations.find(s=>s.id === hoveredId);
+
     return hovered ? [...rest, hovered] : Stations;
     },[hoveredId]);
+
+  function getStationAccess(stationId){
+    let canOpen=true
+    let showOpenButton=true
+
+    if(userId===1){
+      if(stationId==="ST-10") canOpen=true
+      if(stationId==="ST-20") showOpenButton=false
+      if(stationId==="ST-20") canOpen=false
+    }
+
+    if(userId===8){
+      if(stationId==="ST-20") canOpen=true
+      if(stationId==="ST-10") showOpenButton=false
+      if(stationId==="ST-10") canOpen=false
+    }
+
+    if(userId!==1 && userId!==8){
+      canOpen=false;
+      showOpenButton=false
+    }
+
+    return{canOpen, showOpenButton}
+
+  }
   
 
   return (
@@ -66,7 +102,10 @@ export default function Arrow() {
           <Card 
                 title={item.title} 
                 img={item.img} 
-                clicked={()=>navigate(`/${item.id}`)}/>
+                clicked={()=>navigate(`/${item.id}`)}
+                canOpen={getStationAccess(item.id).canOpen}
+                showOpenButton={getStationAccess(item.id).showOpenButton}
+              />
         </div>
       </foreignObject>)})}
     </svg>

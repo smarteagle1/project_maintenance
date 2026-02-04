@@ -5,11 +5,12 @@ export default function Card({
   img="/missing.jpg",
   className = "",
   clicked,
-  onHover
+  stationID,
+  canOpen=true,
+  showOpenButton=true
 }) {
   return (
     <div
-      onMouseOver={onHover}
       className={[
         "w-150 h-125 rounded-3xl",
         "bg-white/90 text-slate-900",
@@ -70,11 +71,12 @@ export default function Card({
           </div>
           {/* image */}
 
+        {showOpenButton &&
         <div className="grid grid-cols-1 mt-auto">
         <button className="rounded-2xl border border-slate-200 hover:bg-amber-300  bg-white px-4 py-3">
             <div onClick={clicked} className="text-lg font-semibold">Open Station</div>
           </button>
-        </div>   
+        </div> }  
         
         </div>
       </div>

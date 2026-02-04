@@ -240,3 +240,17 @@
 //     console.log("Hover cleared");
 //   }
 // }, [hovered]);
+
+
+// bcrypt hash callback hell. 
+// bcrypt.hash(password, hashRounds, async (err, hash) => {
+//   await db.query(...);
+// });
+
+// separate the async db.query from bcrypt.hash
+// const hash = await bcrypt.hash(password, hashRounds);
+
+// await db.query(
+//   "INSERT INTO users (email, password) VALUES ($1, $2)",
+//   [email, hash]
+// );

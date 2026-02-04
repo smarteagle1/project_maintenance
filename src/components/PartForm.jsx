@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import BOMrow from "./BOMrow";
-import bomItems from "./DataSetBOM(not used)";
+import bomItems from "@/data/DataSetBOM(not used)";
 
 export default function PartForm({partId, onCancel}){
   const [form, setForm]=useState({
@@ -22,6 +22,7 @@ export default function PartForm({partId, onCancel}){
     const saved = localStorage.getItem(draftKey);
 
     if (saved) {
+      console.log("saved", saved)
       setForm(JSON.parse(saved));
     } else {
       setForm(emptyForm)
@@ -52,7 +53,7 @@ export default function PartForm({partId, onCancel}){
    }
 
     return(
-      <div className="bg-slate-900 mt-9 ml-9 mr-9 h-118 rounded-md overflow-hidden flex flex-col">
+      <div className="bg-slate-900 mt-9 ml-9 mr-9 h-118 rounded-md overflow-hidden flex flex-col border-2 border-amber-300">
       
       {/* Header section */}
       <div className="rounded-t-2xl pt-5 px-8 w-full overflow-auto">

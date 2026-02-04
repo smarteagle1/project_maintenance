@@ -1,5 +1,4 @@
-import Card from "./Card";
-import Arrow from "./Arrow";
+import Arrow from "@/components/Arrow";
 
 export default function AssemblyLine(){
 
